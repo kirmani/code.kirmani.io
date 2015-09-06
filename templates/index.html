@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css"
+        href="{{ url_for('static', filename='css/normalize.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ url_for('static', filename='css/skeleton.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ url_for('static', filename='css/style.css') }}">
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+    </script>
+    <script
+        src="{{ url_for('static', filename='js/calendar-graph.js') }}">
+    </script>
+	</head>
+	<body>
+    <div class="container">
+      <div class="row">
+        <div class="three columns vcard">
+          <img class="avatar" src="{{ content['avatar_url'] }}">
+          <h1 class="vcard-names">
+            <div class="vcard-fullname">{{ content['name'] }}</div>
+            <div class="vcard-username">{{ content['login'] }}</div>
+          </h1>
+          <hr />
+          <ul class="vcard-details">
+            <li class="vcard-detail company" title="{{ content['company'] }}">
+              {{ content['company'] }}
+            </li>
+            <li class="vcard-detail location" title="{{ content['location'] }}">
+              {{ content['location'] }}
+            </li>
+            <li class="vcard-detail email" title="{{ content['email'] }}">
+              <a href="mailto:{{ content['email'] }}">
+                {{ content['email'] }}
+              </a>
+            </li>
+            <li class="vcard-detail blog" title="{{ content['blog'] }}">
+              <a href="{{ content['blog'] }}">
+                {{ content['blog'] }}
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="nine columns">
+          Right
+          <div class="row">
+            <div class="twelve columns boxed-group">
+              <h3>Contributions</h3>
+              <div class="boxed-group-inner">
+                <div class="js-calendar-graph"
+                    src="{{ content['events_url'] }}">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
