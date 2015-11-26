@@ -18,7 +18,8 @@ app.secret_key = 'kirmani_io_secret_key'
 @app.route('/')
 def hello():
   r = requests.get("https://api.github.com/users/kirmani");
-  return render_template('index.html', content=json.loads(r.content));
+  events = requests.get("https://api.github.com/users/kirmani/events");
+  return render_template('index.html', content=json.loads(r.content), events=json.loads(events.content));
 
 if __name__ == '__main__':
   port = int(os.environ.get('PORT', 33507))

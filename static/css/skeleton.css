@@ -300,13 +300,13 @@ ol ol,
 ol ul {
   margin: 1.5rem 0 1.5rem 3rem;
   font-size: 90%; }
-li {
-  margin-bottom: 1rem; }
+/* li {
+  margin-bottom: 1rem; } */
 
 
 /* Code
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-code {
+/* code {
   padding: .2rem .5rem;
   margin: 0 .2rem;
   font-size: 90%;
@@ -317,7 +317,7 @@ code {
 pre > code {
   display: block;
   padding: 1rem 1.5rem;
-  white-space: pre; }
+  white-space: pre; } */
 
 
 /* Tables
@@ -345,7 +345,7 @@ textarea,
 select,
 fieldset {
   margin-bottom: 1.5rem; }
-pre,
+/* pre,
 blockquote,
 dl,
 figure,
@@ -354,7 +354,7 @@ p,
 ul,
 ol,
 form {
-  margin-bottom: 2.5rem; }
+  margin-bottom: 2.5rem; } */
 
 
 /* Utilities

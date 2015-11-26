@@ -12,10 +12,11 @@
     <script
       src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.5.4/CustomElements.min.js"></script>
     <script
-        src="{{ url_for('static', filename='js/calendar-graph.js') }}">
+        src="{{ url_for('static', filename='js/time-elements.js') }}">
     </script>
-	</head>
+  </head>
 	<body>
     <div class="container">
       <div class="row">
@@ -46,15 +47,41 @@
           </ul>
         </div>
         <div class="nine columns">
-          Right
-          <div class="row">
-            <div class="twelve columns boxed-group">
-              <h3>Contributions</h3>
-              <div class="boxed-group-inner">
-                <div class="js-calendar-graph"
-                    src="{{ content['events_url'] }}">
+          <div class="activity-tab">
+            <div class="news public_news">
+              {% for event in events %}
+              <div class="alert push">
+                <div class="body">
+                  <span class="mega-octicon octicon-git-commit"></span>
+                  <div class="time">
+                    <time datetime="{{ event.created_at }}" is="relative-time">April 1, 2014</time>
+                  </div>
+                  <div class="title">
+                    <a href="https://github.com/{{ event.actor.login }}">{{ event.actor.login }}</a> pushed to {{ event.payload.ref }} at <a href="https://github.com/{{ event.repo.name }}">{{ event.repo.name }}</a>
+                  </div>
+                </div>
+                <div class="details">
+                  <a href="https://github.com/{{ event.actor.login }}">
+                    <img alt="@{{ event.actor.login }}" class="gravatar" src="{{ event.actor.avatar_url }}" height="30" width="30" />
+                  </a>
+                  <div class="commits">
+                    <ul>
+                      {% for commit in event.payload.commits %}
+                      <li>
+                        <span title="{{ event.actor.login }}">
+                          <img alt="@{{ event.actor.login }}" height="16" src="{{ event.actor.avatar_url }}" width="16" />
+                        </span>
+                        <code>
+                          <a href="https://github.com/{{ event.repo.name }}/commit/{{ commit.sha }}">{{ commit.sha[:7] }}</a>
+                        </code>
+                        <div class="message"><blockquote>{{ commit.message }}</blockquote></div>
+                      </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
                 </div>
               </div>
+              {% endfor %}
             </div>
           </div>
         </div>
