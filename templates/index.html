@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <title>Index</title>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css"
         href="{{ url_for('static', filename='css/normalize.css') }}">
     <link rel="stylesheet" type="text/css"
-        href="{{ url_for('static', filename='css/skeleton.css') }}">
+        href="{{ url_for('static', filename='css/octicons.css') }}">
     <link rel="stylesheet" type="text/css"
         href="{{ url_for('static', filename='css/style.css') }}">
     <script
@@ -19,37 +20,42 @@
   </head>
 	<body>
     <div class="container">
-      <div class="row">
-        <div class="three columns vcard">
+      <div class="header">kirmani/code <a href="https://github.com/kirmani"><span class="mega-octicon octicon-mark-github"></span></a></div>
+      <div class="columns">
+        <div class="column one-fourth vcard">
           <img class="avatar" src="{{ content['avatar_url'] }}">
           <h1 class="vcard-names">
             <div class="vcard-fullname">{{ content['name'] }}</div>
             <div class="vcard-username">{{ content['login'] }}</div>
           </h1>
-          <hr />
           <ul class="vcard-details">
             <li class="vcard-detail company" title="{{ content['company'] }}">
+              <span class="octicon octicon-organization"></span>
               {{ content['company'] }}
             </li>
             <li class="vcard-detail location" title="{{ content['location'] }}">
+              <span class="octicon octicon-location"></span>
               {{ content['location'] }}
             </li>
             <li class="vcard-detail email" title="{{ content['email'] }}">
+              <span class="octicon octicon-mail"></span>
               <a href="mailto:{{ content['email'] }}">
                 {{ content['email'] }}
               </a>
             </li>
             <li class="vcard-detail blog" title="{{ content['blog'] }}">
+              <span class="octicon octicon-link"></span>
               <a href="{{ content['blog'] }}">
                 {{ content['blog'] }}
               </a>
             </li>
           </ul>
         </div>
-        <div class="nine columns">
+        <div class="column three-fourths">
           <div class="activity-tab">
             <div class="news public_news">
               {% for event in events %}
+              {% if event.type == 'PushEvent'%}
               <div class="alert push">
                 <div class="body">
                   <span class="mega-octicon octicon-git-commit"></span>
@@ -81,6 +87,28 @@
                   </div>
                 </div>
               </div>
+              {% elif event.type == 'CreateEvent' %}
+              <div class="alert create simple">
+                <div class="body">
+                  <div class="simple">
+                    {% if event.payload.ref_type == 'branch' %}
+                    <span class="octicon octicon-git-branch"></span>
+                    <div class="title">
+                      <a href="https://github.com/{{ event.actor.login }}">{{ event.actor.login }}</a> created branch <a class="css-truncate css-truncate-target branch-name" href="https://github.com/{{ event.repo.name }}/tree/{{ event.payload.ref }}">{{ event.payload.ref }}</a> at <a href="https://github.com/{{ event.repo.name }}">{{ event.repo.name }}</a>
+                    </div>
+                    {% elif event.payload.ref_type == 'repository' %}
+                    <span class="octicon octicon-repo"></span>
+                    <div class="title">
+                      <a href="https://github.com/{{ event.actor.login }}">{{ event.actor.login }}</a> created repository <a href="https://github.com/{{ event.repo.name }}">{{ event.repo.name }}</a>
+                    </div>
+                    {% endif %}
+                    <div class="time">
+                      <time datetime="{{ event.created_at }}" is="relative-time">April 1, 2014</time>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
               {% endfor %}
             </div>
           </div>

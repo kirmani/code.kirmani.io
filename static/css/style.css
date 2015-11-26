@@ -20,6 +20,23 @@ body {
   margin: 0 auto;
 }
 
+.header {
+  max-height: 100px;
+  font-size: 100px;
+  font-family: 'Ubuntu', sans-serif;
+  text-align: center;
+}
+
+.header a span {
+  font-size: 100px;
+  color: #333;
+}
+
+.header a:hover span {
+  font-size: 100px;
+  color: #4078c0;
+}
+
 a {
   color: #4078c0;
   text-decoration: none;
@@ -30,13 +47,38 @@ a:hover {
   text-decoration: underline;
 }
 
+ul, ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.columns {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.column {
+  float: left;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.one-fourth {
+  width: 25%;
+}
+
+.three-fourths {
+  width: 75%;
+}
+
 img.avatar {
   width: 100%;
   border-radius: 6px;
 }
 
 code {
-  font-family: Consolar, "Liberation Mono", Menlo, Courier, monspace;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monspace;
   font-size: 12px;
 }
 
@@ -69,6 +111,82 @@ code {
   padding: 0;
 }
 
+.vcard-names {
+  margin-top: 5px;
+  line-height: 1;
+}
+
+.vcard-fullname {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  font-size: 26px;
+  line-height: 30px;
+  text-overflow: ellipsis;
+}
+
+.vcard-username {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 24px;
+  color: #666;
+  text-overflow: ellipsis;
+}
+
+.vcard-details {
+  list-style: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-top: 1px solid #eee;
+}
+
+.vcard-detail {
+  width: 100%;
+  padding: 2px 0 2px 24px;
+  overflow-x: hidden;
+  white-space: nowrap;
+  font-size: 14px;
+  text-overflow: ellipsis;
+}
+
+.news .alert .css-truncate.css-truncate-target, .news .alert .css-truncate .css-truncate-target {
+  max-width: 180px;
+}
+
+.css-truncate.css-truncate-target, .css-truncate .css-truncate-target {
+  display: inline-block;
+  max-width: 125px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: top;
+}
+
+a.branch-name {
+  color: #4078c0;
+}
+
+.branch-name {
+  display: inline-block;
+  padding: 2px 6px;
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  color: rgba(0,0,0,0.5);
+  background-color: rgba(209,227,237,0.5);
+  border-radius: 3px;
+}
+
+.vcard-detail .octicon {
+  float: left;
+  width: 16px;
+  text-align: center;
+  margin-left: -24px;
+  color: #999;
+}
+
 .news .alert:first-child {
   border-top: 0;
 }
@@ -84,22 +202,24 @@ code {
   width: 32px;
   height: 32px;
   padding: 3px;
-  color #bbb;
+  color: #bbb;
+}
+
+.news .alert .simple > .octicon {
+  position: absolute !important;
+  left: 11px;
+  width: 16px;
+  height: 16px;
+}
+
+.news .alert .octicon {
+  width: 16px;
+  height: 16px;
+  color: #bbb;
 }
 
 .mega-octicon {
   font-size: 32px;
-}
-
-.mega-octicon {
-  font: normal normal normal 16px/1 octicons;
-  display: inline-block;
-  text-decoration: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 .news .alert .mega-octicon:before {
@@ -129,6 +249,10 @@ code {
   border-bottom: 0;
 }
 
+.news .alert .simple .time {
+  display: inline-block;
+}
+
 .news .alert .time {
   font-size: 12px;
   color: #bbb;
@@ -137,6 +261,13 @@ code {
 .news .alert .title {
   padding: 0;
   font-weight: bold;
+}
+
+.news .alert .simple .title {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: normal;
+  color: #666;
 }
 
 .news .alert .gravatar {
