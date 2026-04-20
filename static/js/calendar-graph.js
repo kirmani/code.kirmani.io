@@ -1,6 +1,6 @@
 /*
  * calendar-graph.js
- * Copyright (C) 2015 Sean Kirmani <sean@kirmani.io>
+ * Copyright (C) 2015 Sean Kirmani
  *
  * Distributed under terms of the MIT license.
  */
